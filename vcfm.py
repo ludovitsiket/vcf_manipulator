@@ -6,6 +6,10 @@ def read_file(contact_file):
         content = raw_content.read()
     return content
 
+def write_file(contact_file, content):
+    with open(contact_file, 'w') as c:
+        c = c.write(content)
+
 def extract(content):
     unnecessary_stuffs = ["VERSION:2.1", ";CELL",
             "N;CHARSET=UTF-8;ENCODING=QUOTED-PRINTABLE:;",
@@ -21,7 +25,7 @@ def main():
     kontakty = sys.argv[1]
     origin_content = read_file(kontakty)
     content = extract(origin_content)
-    print(content)
+    write_file("phone.txt", content)
 
 main()
 
